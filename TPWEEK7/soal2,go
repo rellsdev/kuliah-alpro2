@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+func findRepunit(k, length, rem int) int {
+	if rem == 0 {
+		return length
+	}
+	if length >= k {
+		return -1
+	}
+	return findRepunit(k, length+1, (rem*10+1)%k)
+}
+
+func smallestRepunitDivByK(k int) int {
+	return findRepunit(k, 1, 1%k)
+}
+
+func main() {
+	var k int
+	fmt.Scan(&k)
+	fmt.Println(smallestRepunitDivByK(k))
+}
